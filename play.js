@@ -8,14 +8,15 @@ const ArrayDo = Do({
 const doBlock = [
     { x: [1, 2] },
     { y: [3, 4] },
-    s => ({ z: [1] }),
+    s => (s.x === 2 && s.y === 3 ? { return: () => 0 } : {}),
+    // s => ({ z: [1] }),
     // {
     //     return: s => 0
     // },
     { k: [1, 2] },
     {
         return: s => {
-            return s.x * s.y + s.k + s.z
+            return s.x * s.y + s.k // + s.z
         }
     }
 ]
