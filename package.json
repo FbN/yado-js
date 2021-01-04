@@ -1,0 +1,32 @@
+{
+    "name": "yado-js",
+    "version": "0.0.1",
+    "description": "Yet Another DO notation for Javascript",
+    "main": "index.js",
+    "repository": "https://github.com/FbN/yado.git",
+    "author": "Fabiano Taioli <ftaioli@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "type": "module",
+    "devDependencies": {
+        "@types/node": "^14.14.19",
+        "ava": "^3.15.0",
+        "eslint": "^7.11.0",
+        "eslint-config-standard": "^16.0.2",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "typescript": "^4.0.3"
+    },
+    "ava": {
+        "failFast": true,
+        "verbose": true,
+        "extensions": [
+            "js"
+        ]
+    },
+    "dependencies": {},
+    "scripts": {
+        "test": "ava --node-arguments='--no-warnings' tests/*"
+    }
+}

@@ -1,0 +1,86 @@
+{
+  "type": "BlockStatement",
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "x"
+          },
+          "init": {
+            "type": "YieldExpression",
+            "argument": {
+              "type": "Literal",
+              "value": 3,
+              "raw": "3"
+            },
+            "delegate": false,
+            "do.yieldName": "_v87fg9l0l",
+            "do.yields": []
+          },
+          "do.yields": [
+            "_v87fg9l0l"
+          ]
+        }
+      ],
+      "kind": "const",
+      "do.yields": [
+        "_v87fg9l0l"
+      ]
+    },
+    {
+      "type": "VariableDeclaration",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "y"
+          },
+          "init": {
+            "type": "YieldExpression",
+            "argument": {
+              "type": "Literal",
+              "value": null,
+              "raw": "null"
+            },
+            "delegate": false,
+            "do.yieldName": "_pjt6zwa1l",
+            "do.yields": []
+          },
+          "do.yields": [
+            "_pjt6zwa1l"
+          ]
+        }
+      ],
+      "kind": "const",
+      "do.yields": [
+        "_pjt6zwa1l"
+      ]
+    },
+    {
+      "type": "ReturnStatement",
+      "argument": {
+        "type": "BinaryExpression",
+        "operator": "+",
+        "left": {
+          "type": "Identifier",
+          "name": "x"
+        },
+        "right": {
+          "type": "Identifier",
+          "name": "y"
+        },
+        "do.yields": []
+      },
+      "do.yields": []
+    }
+  ],
+  "do.yields": [
+    "_v87fg9l0l",
+    "_pjt6zwa1l"
+  ]
+}
