@@ -3,6 +3,8 @@ import { Do } from '../index.js'
 import BurridoModule from 'burrido'
 const Burrido = BurridoModule.default
 
+const { bind, returns, to } = Do
+
 const Monad = {
     pure: x => [x],
     bind: xs => f => xs.map(f).reduce((a, b) => a.concat(b), [])
@@ -16,13 +18,7 @@ const BurridoArrayDo = Burrido({
 }).Do
 
 test('array monad', t => {
-    const yado = [
-        { x: [1, 2] },
-        { y: [3, 4] },
-        {
-            return: s => s.x * s.y
-        }
-    ]
+    const yado = [bind('x')([1, 2]), bind('y')([3, 4]), returns(s => s.x * s.y)]
     const burr = function * () {
         const x = yield [1, 2]
         const y = yield [3, 4]
@@ -33,12 +29,10 @@ test('array monad', t => {
 
 test('middle return', t => {
     const yado = [
-        { x: [1, 2] },
-        { y: [3, 4] },
-        s => (s.x === 2 && s.y === 3 ? [{ return: 0 }] : []),
-        {
-            return: s => s.x * s.y
-        }
+        bind('x')([1, 2]),
+        bind('y')([3, 4]),
+        s => (s.x === 2 && s.y === 3 ? [returns(0)] : []),
+        returns(s => s.x * s.y)
     ]
     const burr = function * () {
         const x = yield [1, 2]
@@ -53,13 +47,11 @@ test('middle return', t => {
 
 test('early interruption', t => {
     const yado = [
-        { x: [1, 2] },
-        { y: [3, 4] },
-        s => (s.x === 2 && s.y === 3 ? [{ return: 666 }] : []),
-        { z: [5, 6] },
-        {
-            return: s => s.x * s.y + s.z
-        }
+        bind('x')([1, 2]),
+        bind('y')([3, 4]),
+        s => (s.x === 2 && s.y === 3 ? [returns(666)] : []),
+        bind('z')([5, 6]),
+        returns(s => s.x * s.y + s.z)
     ]
     const burr = function * () {
         const x = yield [1, 2]
@@ -75,15 +67,15 @@ test('early interruption', t => {
 
 test('for loop (with command)', t => {
     const yado = [
-        { x: [1, 2] },
-        { y: [3, 4] },
-        s => ({ ...s, out: [] }),
+        bind('x')([1, 2]),
+        bind('y')([3, 4]),
+        to('out')([]),
         s =>
             [...Array(3).keys()].flatMap(() => [
-                { _: [5, 6] },
-                s => ({ ...s, out: [...s.out, s.x * s.y + s._] })
+                bind('_')([5, 6]),
+                to('out')(s => [...s.out, s.x * s.y + s._])
             ]),
-        { return: s => s.out }
+        returns(s => s.out)
     ]
 
     const burr = function * () {
