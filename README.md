@@ -47,7 +47,7 @@ There are different attempts to bring it Javascript world, that I can resume in 
 
     -   😄 Computationally Efficient
 
-    -   😔 Non as clean to write/read as Yield or language extension.
+    -   😔 Non as clean to write/read as generators or language extension.
 
 <!-- GETTING STARTED -->
 
