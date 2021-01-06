@@ -31,15 +31,15 @@
 
 ## About The Project
 
-Haskell [Do-Notation](https://en.wikibooks.org/wiki/Haskell/do_notation) is a great feature to works with monads.
+Haskell [Do-Notation](https://en.wikibooks.org/wiki/Haskell/do_notation) is a great feature too works with monads.
 
-There are different attemps to bring it Javascript world, that I can resume in this types:
+There are different attempts to bring it Javascript world, that I can resume in these types:
 
--   **Generator based**: Use generator functions and yield instruction as haskell bind operator. This would be a great solution but with a very [heavy drawback](https://github.com/pelotom/burrido#caveats).
+-   **Generator based**: Use generator functions and yield instruction as Haskell bind operator. This would be a great solution but with a very [heavy drawback](https://github.com/pelotom/burrido#caveats).
 
--   **Language Extension**: Extend Javascript language to desugar your do code to vanilla javascript. This require to precompile your code or use eval to dynamic evalute your "just in time" desugared code (what about debug? IDE?).
+-   **Language Extension**: Extend Javascript language to desugar your do code to vanilla javascript. This requires to precompile your code or use eval to dynamic evaluate your "just in time" desugared code (what about debugging? IDE?).
 
--   **Emulate by Data structure**: The case of this library. We use vanilla javascript data structure that will be interepreted as Do notation. This brings:
+-   **Emulate by Data structure**: The case of this library. We use a vanilla javascript data structure that will be interpreted as Do notation. This brings:
 
     -   😄 Vannilla javascript. No pre-compilation / eval.
 
@@ -67,11 +67,11 @@ You write your Do block as an array of statements.
 
 Every statement is a Javascript object or a function.
 
-We have three type of objects: bind, returns and to.
+We have three types of objects: bind, returns, and to.
 
-You can write this objects directly or using an utility function.
+You can write these objects directly or using a utility function.
 
-Let's see a quick example.
+Let's discover by samples:
 
 _Burrido version_
 
@@ -203,7 +203,7 @@ bind([1, 2])(x => bind([x + 3, x + 4])(y => pure(x * y)))
 
 ### return
 
-Stamente used to return and and the Do block. Take as argument a function from _scope_ to a value to be returned or directy a value.
+Statement used to return and the Do block. Take as argument a function from _scope_ to a value to be returned or directly a value.
 
 We can have many return statements, look at this sample:
 
@@ -265,11 +265,11 @@ ArrayDo([
 
 ## functions
 
-When the statement is a function will be executed taking the scope as argument. The function can return two type: Array or Obejct.
+When the statement is a function will be executed taking the scope as argument. The function can return two types: Array or Object.
 
 ### scope => []
 
-Function return an array of additional statements that will be interepreted before continue.
+Function that returns an array of additional statements that will be interpreted before continue.
 
 ```js
 // see up for ArrayDo init
@@ -285,7 +285,7 @@ ArrayDo([
 
 ### scope => {}
 
-Function return an object. The object will replace the block scope.
+A function that returns an object. The object will replace the block scope.
 
 ```js
 // see up for ArrayDo init
