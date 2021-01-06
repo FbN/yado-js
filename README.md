@@ -71,6 +71,8 @@ We have three types of objects: bind, returns, and to.
 
 You can write these objects directly or using a utility function.
 
+Do keep all declared vars in an object that we call scope (it's like the javascript local scope in the case of the generator function). So every statement can act and change the vars in the scope (see the section about function to discover more).
+
 Let's discover by samples:
 
 _Burrido version_
@@ -234,7 +236,7 @@ N.B. The utility function is named return**s** for obvious reason.
 
 ### to
 
-Shurtcut to set a value into the scope.
+Shortcut to set a value into the scope.
 
 ```js
 // see up for ArrayDo init
