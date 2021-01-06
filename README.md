@@ -25,6 +25,7 @@
 -   [Fantasy Land](#fantasy-land)
 -   [License](#license)
 -   [Contact](#contact)
+-   [Related and similar projects](#related-and-similar-projects)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -330,8 +331,7 @@ Fabiano Taioli - ftaioli@gmail.com
 Project Link: [https://github.com/FbN/yado-js](https://github.com/FbN/yado-js)
 
 <!-- RELATED -->
-
-## Related & similar projects
+## Related and similar projects
 
 Some library found looking around. In no any special order.
 
