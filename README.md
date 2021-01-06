@@ -135,7 +135,7 @@ Every element of the array passed to Do function is can be a plain object or a f
 ### Objects
 
 -   [`bind`](#bind)
--   [`returns`](#returns)
+-   [`return`](#return)
 -   [`to`](#to)
 
 ### Function
@@ -166,6 +166,11 @@ ArrayDo([
 ])
 
 ```
+In the example the object { x: [1, 2] } is desugared to as we call bind on the argument and assign result to x.
+
+```js
+bind([1, 2])(x => bind([3, 4])(y => pure(x * y)))
+```
 
 Is possible to group many binds in the same statement object:
 ```js
@@ -174,12 +179,6 @@ ArrayDo([
     { x: [1, 2], y: [3, 4] },
     { return: s => s.x * s.y } // [3, 4, 6, 8]
 ])
-```
-
-In the example the object { x: [1, 2] } is desugared to as we call bind on the argument and assign result to x.
-
-```js
-bind([1, 2])(x => bind([3, 4])(y => pure(x * y)))
 ```
 
 Instead of directly set a monad instance as argument we can pass a function that takes as input the scope and return a monad instance.
