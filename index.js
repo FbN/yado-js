@@ -1,5 +1,10 @@
 const RESULT = 'return'
 
+const fantasy = {
+    of: 'fantasy-land/of',
+    chain: 'fantasy-land/chain'
+}
+
 const I = s => s
 
 const isFunction = statement => typeof statement === 'function'
@@ -41,8 +46,16 @@ const blockResolve = Monad => {
         }, chain)
 }
 
-const Do = ({ pure, bind }) => statemens =>
-    blockResolve({ pure, bind })(statemens)(scope => scope[RESULT])({})
+const getMonad = MonadDef =>
+    MonadDef[fantasy.of]
+        ? {
+            pure: MonadDef[fantasy.of],
+            bind: x => f => x[fantasy.chain](f)
+        }
+        : MonadDef
+
+const Do = MonadDef => statemens =>
+    blockResolve(getMonad(MonadDef))(statemens)(scope => scope[RESULT])({})
 
 // Command utility
 const bind = identifier => argument => ({ [identifier]: argument })
