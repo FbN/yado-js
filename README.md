@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/FbN/yado-js">
-    <img src="images/logo.png?" alt="YADO JS" width="400">
+    <img src="https://raw.githubusercontent.com/FbN/yado-js/HEAD/images/logo.png" alt="YADO JS" width="400">
   </a>
 
   <h3 align="center">Yet Another <strong>Do-Notation</strong> for Javascript</h3>
