@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "Yet Another DO notation for Javascript",
     "main": "index.js",
-    "repository": "https://github.com/FbN/yado.git",
+    "repository": "https://github.com/FbN/yado-js",
     "author": "Fabiano Taioli <ftaioli@gmail.com>",
     "license": "MIT",
     "private": false,
