@@ -345,7 +345,8 @@ Some library found looking around. In no any special order.
 -   [@masaeedu/do](https://github.com/masaeedu/do):
     Similar to this project. You must declare binded vars at start. Lack features (many return points).
 -   [monadicjs](https://github.com/coot/monadicjs):
-    Use generator. Do not support non deterministic monads.
+-   [monio](https://github.com/getify/monio):
+    Use generator and promises. Do not support non deterministic monads.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
