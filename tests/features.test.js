@@ -32,3 +32,21 @@ test('with scope', t => {
     }
     t.deepEqual(BurridoArrayDo(burr), ArrayDo(yado)) // [ 4, 5, 7, 9 ]
 })
+
+test('by function', t => {
+    const yado = [
+        { x: () => [1, 2] },
+        s => ({ ...s, z: 1 }),
+        { y: [3, 4] },
+        {
+            return: s => s.x * s.y + s.z
+        }
+    ]
+    const burr = function * () {
+        const x = yield [1, 2]
+        const z = 1
+        const y = yield [3, 4]
+        return x * y + z
+    }
+    t.deepEqual(BurridoArrayDo(burr), ArrayDo(yado)) // [ 4, 5, 7, 9 ]
+})

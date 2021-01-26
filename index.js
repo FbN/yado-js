@@ -12,17 +12,21 @@ const isFunction = statement => typeof statement === 'function'
 const resultOrChain = chain => scope =>
     scope[RESULT] !== undefined ? scope[RESULT] : chain(scope)
 
+const resolveArgument = (argument, scope) =>
+    isFunction(argument) ? argument(scope) : argument
+
 const tokenChain = ({ pure, bind }) => (chain, [token, argument]) => {
     if (token === 'return') {
         return scope =>
             chain({
                 ...scope,
-                [RESULT]: pure(
-                    isFunction(argument) ? argument(scope) : argument
-                )
+                [RESULT]: pure(resolveArgument(argument, scope))
             })
     }
-    return scope => bind(argument)(v => chain({ ...scope, [token]: v }))
+    return scope =>
+        bind(resolveArgument(argument, scope))(v =>
+            chain({ ...scope, [token]: v })
+        )
 }
 
 const blockResolve = Monad => {
@@ -54,8 +58,10 @@ const getMonad = MonadDef =>
         }
         : MonadDef
 
-const Do = MonadDef => statemens =>
-    blockResolve(getMonad(MonadDef))(statemens)(scope => scope[RESULT])({})
+const Exe = MonadDef => statemens =>
+    blockResolve(getMonad(MonadDef))(statemens)(scope => scope[RESULT])
+
+const Do = MonadDef => statemens => Exe(MonadDef)(statemens)({})
 
 // Command utility
 const bind = identifier => argument => ({ [identifier]: argument })
@@ -69,4 +75,4 @@ Do.bind = bind
 Do.returns = returns
 Do.to = to
 
-export { Do }
+export { Do, Exe }

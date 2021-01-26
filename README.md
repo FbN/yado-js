@@ -127,6 +127,25 @@ ArrayDo([
 ]) // [3, 4, 6, 8]
 ```
 
+## Scope init
+By default Do start the computation with an empty scope {}.
+It's possibile to start computation with an initial scope using Exe.
+
+```js
+import {Exe, bind, returns} from 'yado-js'
+
+const ArrayDo = Exe({
+    pure: x => [x],
+    bind: xs => f => xs.map(f).reduce((a, b) => a.concat(b)
+})
+
+ArrayDo([
+    bind('x')([1, 2]),
+    bind('y')([3, 4]),
+    returns(s => s.x * s.y + s.k)
+])({k: 1}) // [4, 5, 7, 9]
+```
+
 **See below for more example and use cases**
 
 <!-- STATEMENTS -->
